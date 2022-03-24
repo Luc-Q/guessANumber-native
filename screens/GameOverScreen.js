@@ -1,67 +1,71 @@
-import React from "react";
-import { View, Text, StyleSheet, Button, Image } from "react-native";
-import BodyText from "../components/BodyText";
-import MainButton from "../components/MainButton";
-import TitleText from "../components/TitleText";
-import colors from "../constants/colors";
+import React from 'react';
+import { View, Text, StyleSheet, Button, Image } from 'react-native';
 
-const GameOverScreen = (props) => {
-    return (
-        <View style={styles.screen}>
-            <TitleText>The game is over!</TitleText>
-            <View style={styles.imageContainer}>
-                <Image
-                    source={require("../assets/success.png")}
-                    // source={{
-                    //     uri: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.deviantart.com%2Fjordangrimmer%2Fart%2FWinter-Moutain-Video-Process-832633424&psig=AOvVaw3cgGKpcZ8PAtpNyt1unJ4L&ust=1648015406536000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCICpqvuF2fYCFQAAAAAdAAAAABAJ",
-                    // }}
-                    style={styles.image}
-                    resizeMode="cover"
-                />
-            </View>
-            <View style={styles.resultContainer}>
-                <BodyText style={styles.resultText}>
-                    Your phone needed{" "}
-                    <Text style={styles.highlight}>{props.roundsNumber}</Text>{" "}
-                    rounds to guess the number{" "}
-                    <Text style={styles.highlight}>{props.userNumber}</Text>
-                </BodyText>
-            </View>
-            <MainButton onPress={props.onRestart}>New Game</MainButton>
-        </View>
-    );
+import BodyText from '../components/BodyText';
+import TitleText from '../components/TitleText';
+import MainButton from '../components/MainButton';
+import Colors from '../constants/colors';
+
+const GameOverScreen = props => {
+  return (
+    <View style={styles.screen}>
+      <TitleText>The Game is Over!</TitleText>
+      <View style={styles.imageContainer}>
+        <Image
+          source={require('../assets/success.png')}
+          // source={{
+          //   uri:
+          //     'https://cdn.pixabay.com/photo/2016/05/05/23/52/mountain-summit-1375015_960_720.jpg'
+          // }}
+          style={styles.image}
+          resizeMode="cover"
+        />
+      </View>
+      <View style={styles.resultContainer}>
+        <BodyText style={styles.resultText}>
+          Your phone needed{' '}
+          <Text style={styles.highlight}>{props.roundsNumber}</Text> rounds to
+          guess the number{' '}
+          <Text style={styles.highlight}>{props.userNumber}</Text>.
+        </BodyText>
+      </View>
+
+      <MainButton onPress={props.onRestart}>NEW GAME</MainButton>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    imageContainer: {
-        width: 300,
-        height: 300,
-        borderRadius: 200,
-        borderWidth: 3,
-        borderColor: "black",
-        overflow: "hidden",
-        marginVertical: 30,
-    },
-    image: {
-        width: "100%",
-        height: "100%",
-    },
-    highlight: {
-        color: colors.primary,
-    },
-    resultContainer: {
-        marginHorizontal: 20,
-        marginVertical: 50,
-    },
-    resultText: {
-        textAlign: "center",
-        fontSize: 20,
-    },
+  screen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  imageContainer: {
+    width: 300,
+    height: 300,
+    borderRadius: 150,
+    borderWidth: 3,
+    borderColor: 'black',
+    overflow: 'hidden',
+    marginVertical: 30
+  },
+  image: {
+    width: '100%',
+    height: '100%'
+  },
+  resultContainer: {
+    marginHorizontal: 30,
+    marginVertical: 15
+  },
+  resultText: {
+    textAlign: 'center',
+    fontSize: 20
+  },
+  highlight: {
+    color: Colors.primary,
+    fontFamily: 'open-sans-bold'
+  }
 });
 
 export default GameOverScreen;
